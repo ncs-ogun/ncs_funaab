@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowRight, FiCheck, FiX, FiAlertCircle, FiClock, FiDollarSign, FiCalendar } from 'react-icons/fi';
 import { loanTypes, calculateLoanMetrics } from '../data/loans';
+import LoanDetails from '../components/LoanDetails';
 
 const Loans = () => {
   const [selectedLoan, setSelectedLoan] = useState(null);
@@ -20,8 +21,9 @@ const Loans = () => {
   const [formErrors, setFormErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showDashboard, setShowDashboard] = useState(false);
+  const [selectedActiveLoan, setSelectedActiveLoan] = useState(null);
 
-  // Mock active loans data
+  // Mock active loans data with more details
   const activeLoansMock = [
     {
       id: 1,
@@ -29,7 +31,14 @@ const Loans = () => {
       amount: 200000,
       nextPayment: '2024-04-03',
       status: 'active',
-      progress: 30
+      progress: 30,
+      startDate: '2024-01-01',
+      totalPayments: 12,
+      documents: [
+        { name: 'Loan Agreement', url: '#' },
+        { name: 'Payment Schedule', url: '#' },
+        { name: 'Terms & Conditions', url: '#' }
+      ]
     },
     {
       id: 2,
@@ -37,7 +46,14 @@ const Loans = () => {
       amount: 1500000,
       nextPayment: '2024-04-15',
       status: 'pending',
-      progress: 0
+      progress: 0,
+      startDate: '2024-02-01',
+      totalPayments: 36,
+      documents: [
+        { name: 'Loan Agreement', url: '#' },
+        { name: 'Payment Schedule', url: '#' },
+        { name: 'Terms & Conditions', url: '#' }
+      ]
     }
   ];
 
@@ -56,6 +72,14 @@ const Loans = () => {
     setShowDashboard(true);
     setShowApplication(false);
     setSelectedLoan(null);
+  };
+
+  const handleViewLoanDetails = (loan) => {
+    setSelectedActiveLoan(loan);
+  };
+
+  const handleCloseLoanDetails = () => {
+    setSelectedActiveLoan(null);
   };
 
   const handleInputChange = (e) => {
@@ -206,7 +230,10 @@ const Loans = () => {
                         </span>
                         <p>Next: {new Date(loan.nextPayment).toLocaleDateString()}</p>
                       </div>
-                      <button className="view-details-btn">
+                      <button 
+                        className="view-details-btn"
+                        onClick={() => handleViewLoanDetails(loan)}
+                      >
                         View Details
                       </button>
                     </div>
@@ -455,6 +482,14 @@ const Loans = () => {
           </div>
         )}
       </div>
+
+      {/* Loan Details Modal */}
+      {selectedActiveLoan && (
+        <LoanDetails
+          loan={selectedActiveLoan}
+          onClose={handleCloseLoanDetails}
+        />
+      )}
     </div>
   );
 };
