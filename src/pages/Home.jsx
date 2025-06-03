@@ -78,7 +78,7 @@ const Home = () => {
 
           <motion.div variants={itemVariants}>
             <img
-              src="/images/hero-image.jpg"
+              src="/images/home/hero-image.svg"
               alt="Farmer in Field"
               className="rounded-lg w-full h-[500px] object-cover"
             />
@@ -150,7 +150,7 @@ const Home = () => {
           >
             <motion.div variants={itemVariants}>
               <img
-                src="/images/marketplace.jpg"
+                src="https://placehold.co/800x400?text=Agricultural+Marketplace"
                 alt="Agricultural Marketplace"
                 className="rounded-lg w-full h-[400px] object-cover"
               />

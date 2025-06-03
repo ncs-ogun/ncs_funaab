@@ -57,7 +57,7 @@ export const products = [
     category: 'grains',
     price: 25000,
     unit: 'bag',
-    image: '/images/products/rice.jpg',
+    image: 'https://placehold.co/400x300?text=Premium+Rice',
     badge: 'Best Seller',
     stock: 150,
     features: [
@@ -73,7 +73,7 @@ export const products = [
     category: 'grains',
     price: 15000,
     unit: 'bag',
-    image: '/images/products/corn.jpg',
+    image: 'https://placehold.co/400x300?text=Yellow+Corn',
     stock: 200,
     features: [
       { icon: '🌽', text: 'Fresh Harvest' },
@@ -88,7 +88,7 @@ export const products = [
     category: 'grains',
     price: 18000,
     unit: 'bag',
-    image: '/images/products/millet.jpg',
+    image: 'https://placehold.co/400x300?text=Millet',
     badge: 'New',
     stock: 75,
     features: [
@@ -106,7 +106,7 @@ export const products = [
     category: 'vegetables',
     price: 1500,
     unit: 'basket',
-    image: '/images/products/tomatoes.jpg',
+    image: 'https://placehold.co/400x300?text=Fresh+Tomatoes',
     badge: 'Fresh',
     stock: 100,
     features: [
@@ -122,7 +122,7 @@ export const products = [
     category: 'vegetables',
     price: 1200,
     unit: 'basket',
-    image: '/images/products/peppers.jpg',
+    image: 'https://placehold.co/400x300?text=Green+Peppers',
     stock: 80,
     features: [
       { icon: '🫑', text: 'Fresh Daily' },
@@ -139,7 +139,7 @@ export const products = [
     category: 'livestock',
     price: 350000,
     unit: 'cow',
-    image: '/images/products/dairy-cow.jpg',
+    image: 'https://placehold.co/400x300?text=Dairy+Cow',
     badge: 'Premium',
     stock: 10,
     features: [
@@ -155,7 +155,7 @@ export const products = [
     category: 'livestock',
     price: 45000,
     unit: 'goat',
-    image: '/images/products/goat.jpg',
+    image: 'https://placehold.co/400x300?text=Goat',
     stock: 25,
     features: [
       { icon: '🐐', text: 'Healthy' },
@@ -172,7 +172,7 @@ export const products = [
     category: 'poultry',
     price: 2500,
     unit: 'bird',
-    image: '/images/products/layers.jpg',
+    image: 'https://placehold.co/400x300?text=Layer+Chickens',
     badge: 'Best Value',
     stock: 500,
     features: [
@@ -190,7 +190,7 @@ export const products = [
     category: 'equipment',
     price: 75000,
     unit: 'set',
-    image: '/images/products/irrigation.jpg',
+    image: 'https://placehold.co/400x300?text=Irrigation+System',
     badge: 'Sale',
     stock: 15,
     features: [
@@ -198,7 +198,7 @@ export const products = [
       { icon: '🔧', text: 'Easy Installation' },
       { icon: '⚡', text: 'Solar Powered' }
     ],
-    description: 'Modern irrigation system with smart water management features.'
+    description: 'Modern irrigation system for efficient water management.'
   },
 
   // Seeds
@@ -244,15 +244,15 @@ export const getProductsByCategory = (categoryId) => {
 };
 
 export const searchProducts = (query) => {
-  const lowercaseQuery = query.toLowerCase();
+  const searchTerm = query.toLowerCase();
   return products.filter(product => 
-    product.name.toLowerCase().includes(lowercaseQuery) ||
-    product.description.toLowerCase().includes(lowercaseQuery)
+    product.name.toLowerCase().includes(searchTerm) ||
+    product.description.toLowerCase().includes(searchTerm)
   );
 };
 
 export const filterByPrice = (min, max) => {
   return products.filter(product => 
-    product.price >= min && (max ? product.price <= max : true)
+    product.price >= min && product.price <= max
   );
 }; 

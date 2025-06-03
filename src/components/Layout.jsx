@@ -5,6 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { FiPhone, FiChevronDown, FiUser, FiShoppingCart } from 'react-icons/fi';
 import { useCart } from '../context/CartContext';
 import PropTypes from 'prop-types';
+import MobileNav from './MobileNav';
 
 const Layout = ({ children }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -107,6 +108,8 @@ const Layout = ({ children }) => {
             </div>
           </div>
         </nav>
+
+        <MobileNav />
       </header>
 
       <main>
