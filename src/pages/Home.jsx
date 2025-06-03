@@ -1,8 +1,17 @@
 /* eslint-disable no-unused-vars */
 import { motion } from 'framer-motion';
 import { FiSearch, FiArrowRight } from 'react-icons/fi';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
+import { products } from '../data/products';
+import toast from 'react-hot-toast';
 
 const Home = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+  const { addToCart } = useCart();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -43,6 +52,30 @@ const Home = () => {
     }
   ];
 
+  // Handle search submission
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/products?search=${encodeURIComponent(searchQuery)}`);
+    } else {
+      toast.error('Please enter a search term');
+    }
+  };
+
+  // Handle marketplace button click
+  const handleExploreMarketplace = () => {
+    navigate('/marketplace');
+  };
+
+  // Handle add to cart
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    toast.success(`Added ${product.name} to cart!`);
+  };
+
+  // Get featured products (first 4 products)
+  const featuredProducts = products.slice(0, 4);
+
   return (
     <>
       <section className="hero">
@@ -60,20 +93,23 @@ const Home = () => {
               Access fresh farm products directly from farmers, secure agricultural loans, 
               and grow your farming business with our innovative fintech solutions.
             </p>
-            <div className="search-container">
+            <form onSubmit={handleSearch} className="search-container">
               <input
                 type="text"
                 placeholder="Search for agricultural products"
                 className="search-input"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
               />
               <motion.button
+                type="submit"
                 className="search-button"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <FiSearch size={20} />
               </motion.button>
-            </div>
+            </form>
           </motion.div>
 
           <motion.div variants={itemVariants}>
@@ -130,6 +166,23 @@ const Home = () => {
                 className="card"
                 variants={itemVariants}
                 whileHover={{ y: -10, scale: 1.02 }}
+                onClick={() => {
+                  // Navigate based on feature
+                  switch (feature.title) {
+                    case 'Direct Farm Access':
+                      navigate('/marketplace');
+                      break;
+                    case 'Secure Payments':
+                      navigate('/cart');
+                      break;
+                    case 'Agricultural Loans':
+                      navigate('/loans');
+                      break;
+                    default:
+                      break;
+                  }
+                }}
+                style={{ cursor: 'pointer' }}
               >
                 <div className="card-icon">{feature.icon}</div>
                 <h3 className="card-title">{feature.title}</h3>
@@ -168,6 +221,7 @@ const Home = () => {
                 className="button button-primary flex items-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={handleExploreMarketplace}
               >
                 Explore Marketplace
                 <FiArrowRight />
@@ -205,27 +259,36 @@ const Home = () => {
             initial="hidden"
             animate="visible"
           >
-            {[1, 2, 3, 4].map((item) => (
+            {featuredProducts.map((product) => (
               <motion.div
-                key={item}
+                key={product.id}
                 className="product-card"
                 variants={itemVariants}
                 whileHover={{ scale: 1.02 }}
               >
                 <img
-                  src={`/images/products/product-${item}.jpg`}
-                  alt={`Product ${item}`}
+                  src={product.image}
+                  alt={product.name}
                   className="product-image"
+                  onClick={() => navigate(`/products/${product.id}`)}
+                  style={{ cursor: 'pointer' }}
                 />
                 <div className="product-content">
-                  <h3 className="product-title">Product Name</h3>
-                  <p className="product-description">Short description of the product</p>
+                  <h3 
+                    className="product-title"
+                    onClick={() => navigate(`/products/${product.id}`)}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    {product.name}
+                  </h3>
+                  <p className="product-description">{product.description}</p>
                   <div className="product-footer">
-                    <span className="product-price">₦5,000</span>
+                    <span className="product-price">₦{product.price.toLocaleString()}</span>
                     <motion.button
                       className="add-to-cart-btn"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
+                      onClick={() => handleAddToCart(product)}
                     >
                       Add to Cart
                     </motion.button>

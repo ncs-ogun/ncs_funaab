@@ -6,6 +6,7 @@ import { FiPhone, FiChevronDown, FiUser, FiShoppingCart } from 'react-icons/fi';
 import { useCart } from '../context/CartContext';
 import PropTypes from 'prop-types';
 import MobileNav from './MobileNav';
+import { Toaster } from 'react-hot-toast';
 
 const Layout = ({ children }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,6 +24,27 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 3000,
+          style: {
+            background: '#333',
+            color: '#fff',
+          },
+          success: {
+            style: {
+              background: '#2F7A3D',
+            },
+          },
+          error: {
+            style: {
+              background: '#e74c3c',
+            },
+          },
+        }}
+      />
+      
       <header className="header">
         <div className="top-banner">
           <div className="container">
