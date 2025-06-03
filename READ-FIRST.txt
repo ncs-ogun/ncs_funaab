@@ -1,0 +1,2 @@
+1. Copy things from the common folder when creating a new page
+2. Tailwind scripts:  <script src="https://cdn.tailwindcss.com"></script>

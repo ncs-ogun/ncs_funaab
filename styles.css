@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --primary-color: #003d28;
+}
+
+body {
+  font-family: "Montserrat", serif;
+  overflow-x: hidden;
+}
+
+/* footer {
+  background: var(--primary-color);
+  color: white;
+  padding: 1rem 0;
+} */
+
+input,
+a {
+  outline: none;
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+  width: 0.3rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+/** HOME PAGE */
+
+.product-list {
+  display: flex;
+  gap: 1rem;
+}
+
+.product {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  text-align: center;
+}
+
+#nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.nav-list {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-list2 {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-list2 div,
+a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+#logo {
+  color: var(--primary-color);
+}
+
+.underline-text {
+  text-decoration: none;
+  box-shadow: inset 0 -2px 0 rgba(50, 85, 127, 0.5), 0 2px 0 rgba(50, 85, 127, 0.5);
+  transition: box-shadow 0.3s;
+  color: inherit;
+  overflow: hidden;
+}
+
+.underline-text:hover {
+  box-shadow: inset 0 -30px 0 rgba(50, 85, 127, 0.5), 0 2px 0 rgba(50, 85, 127, 0.5);
+}
+
+#hero-container {
+  min-height: 30rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 768px) {
+  #hero-container {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-list2 {
+    display: flex;
+    gap: 0.3rem;
+  }
+
+  .nav-list {
+    display: none;
+  }
+}
+
+/* #top-deals-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+} */
+
+/** HOME PAGE END */
+
+/* CART PAGE START */
+
+/* CART PAGE END */

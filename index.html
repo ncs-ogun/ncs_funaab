@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./search.js" defer></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            container: {
+              center: true,
+              padding: "1rem",
+            },
+            colors: {
+              primary: "#2F7A3D",
+            },
+          },
+        },
+      };
+    </script>
+    <title>AgroPlus - Connecting Farmers and Buyers</title>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <!-- BANNER -->
+      <div class="py-2 md:text-xs text-[9px] bg-primary text-white">
+        <div class="container flex items-center justify-between font-medium px-0">
+          <div class="flex items-center cursor-pointer sm:gap-2">
+            <img src="./public/icons/phone.svg" alt="Phone" width="18" height="18" />
+            <p>+2348133961439</p>
+          </div>
+          <p class="flex items-center md:gap-4 gap-1">
+            <span>Get Agricultural Loans Up to ₦5,000,000</span> <span>|</span>
+            <span>Apply Now</span>
+          </p>
+          <div class="nav-list2">
+            <div>
+              <span id="cart-count">Eng</span>
+              <img src="./public/icons/chevron-down.svg" alt="Language" width="20" height="20" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="px-2 md:px-0">
+        <div class="container" id="nav-container">
+          <div>
+            <a href="/" class="flex items-center gap-2" id="logo">
+              <img src="./public/images/logo.png" alt="AgroPlus Logo" width="34" height="34" />
+              <span class="font-bold text-2xl">AgroPlus</span>
+            </a>
+          </div>
+          <ul class="nav-list text-sm">
+            <li><a href="./categories.html">Products</a></li>
+            <li><a href="./loans.html">Loans</a></li>
+            <li><a href="./marketplace.html">Marketplace</a></li>
+            <li><a href="./about.html">About</a></li>
+          </ul>
+          <div class="nav-list2 text-sm">
+            <div class="nav-list3 text-sm">
+              <img src="./public/icons/user.svg" alt="User Account" width="18" height="18" />
+              <a href="./login.html"><span id="cart-count">Login</span></a>
+            </div>
+            <a href="./cart.html">
+              <img src="./public/icons/cart.svg" alt="Shopping Cart" width="18" height="18" />
+              <span id="cart-count">Cart</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+      <section id="home">
+        <div class="container" id="hero-container">
+          <div class="flex flex-col justify-center gap-4">
+            <div class="space-y-10">
+              <div class="max-w-2xl space-y-3">
+                <h2 class="font-extrabold md:text-7xl text-6xl">
+                  Connecting Farmers with Buyers
+                </h2>
+                <p class="max-w-md md:mx-0 mx-auto text-[14px] font-medium">
+                  Access fresh farm products directly from farmers, secure agricultural loans, and grow your farming business with our innovative fintech solutions.
+                </p>
+              </div>
+              <div class="space-y-2 max-w-md">
+                <div class="relative" id="search-container">
+                  <form class="border border-gray-200 rounded-full p-1 flex items-center focus-within:border-primary duration-300" id="search_form">
+                    <input type="text" class="px-4 flex-grow text-sm" placeholder="Search for agricultural products" />
+                    <button class="text-white bg-primary px-4 py-2 rounded-full flex items-center text-sm gap-1">
+                      <img src="./public/icons/plane.svg" alt="Search" width="20" height="20" />
+                    </button>
+                  </form>
+
+                  <ul class="absolute top-0 left-0 top-[calc(100%+10px)] divide-y divide-gray-100 w-full bg-white shadow-2xl z-[1000] max-h-[20rem] overflow-y-auto rounded-md hidden" id="results">
+                    <p class="text-sm text-gray-500 text-center">No results</p>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sm:flex hidden items-center justify-center">
+            <img src="./public/images/home/farmer-hero.jpg" alt="Farmer in Field" width="600" height="600" class="rounded-lg object-cover" />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container py-16 space-y-6">
+          <div class="flex items-center justify-between gap-1">
+            <h3 class="font-extrabold md:text-2xl text-xl capitalize">
+              Featured Categories
+            </h3>
+            <span class="text-primary text-sm font-medium cursor-pointer flex-shrink-0 border-b">See all</span>
+          </div>
+
+          <div class="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-6">
+            <!-- Crops -->
+            <div>
+              <a href="/categories.html" class="space-y-2 text-center">
+                <div class="min-h-60 bg-primary rounded-md p-2 relative duration-200 hover:border-primary overflow-hidden group">
+                  <img src="./public/images/crops.jpg" alt="Crops" class="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-110 duration-300" />
+                  <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/80 flex text-white items-end justify-center p-4 duration-300 group-hover:from-black">
+                    <p class="text-sm font-medium capitalize">Crops & Grains</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Livestock -->
+            <div>
+              <a href="/categories.html" class="space-y-2 text-center">
+                <div class="min-h-60 bg-primary rounded-md p-2 relative duration-200 hover:border-primary overflow-hidden group">
+                  <img src="./public/images/livestock.jpg" alt="Livestock" class="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-110 duration-300" />
+                  <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/80 flex text-white items-end justify-center p-4 duration-300 group-hover:from-black">
+                    <p class="text-sm font-medium capitalize">Livestock</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Farm Equipment -->
+            <div>
+              <a href="/categories.html" class="space-y-2 text-center">
+                <div class="min-h-60 bg-primary rounded-md p-2 relative duration-200 hover:border-primary overflow-hidden group">
+                  <img src="./public/images/equipment.jpg" alt="Farm Equipment" class="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-110 duration-300" />
+                  <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/80 flex text-white items-end justify-center p-4 duration-300 group-hover:from-black">
+                    <p class="text-sm font-medium capitalize">Farm Equipment</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Agro-Chemicals -->
+            <div>
+              <a href="/categories.html" class="space-y-2 text-center">
+                <div class="min-h-60 bg-primary rounded-md p-2 relative duration-200 hover:border-primary overflow-hidden group">
+                  <img src="./public/images/agrochemicals.jpg" alt="Agro-Chemicals" class="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-110 duration-300" />
+                  <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/80 flex text-white items-end justify-center p-4 duration-300 group-hover:from-black">
+                    <p class="text-sm font-medium capitalize">Agro-Chemicals</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Financial Services Section -->
+      <section class="bg-gray-50">
+        <div class="container py-16 space-y-8">
+          <h3 class="font-extrabold md:text-2xl text-xl text-center">
+            Financial Services for Farmers
+          </h3>
+          
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Loans -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="bg-primary/10 p-3 rounded-full">
+                  <img src="./public/icons/loan.svg" alt="Loan" class="w-6 h-6" />
+                </div>
+                <h4 class="font-bold text-lg">Agricultural Loans</h4>
+              </div>
+              <p class="text-gray-600 text-sm">Access flexible loans tailored for farmers with competitive interest rates and flexible repayment terms.</p>
+              <a href="/loans.html" class="text-primary font-medium text-sm mt-4 inline-block">Learn More →</a>
+            </div>
+
+            <!-- Grants -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="bg-primary/10 p-3 rounded-full">
+                  <img src="./public/icons/grant.svg" alt="Grant" class="w-6 h-6" />
+                </div>
+                <h4 class="font-bold text-lg">Agricultural Grants</h4>
+              </div>
+              <p class="text-gray-600 text-sm">Discover and apply for government and private sector grants to boost your farming business.</p>
+              <a href="/grants.html" class="text-primary font-medium text-sm mt-4 inline-block">Learn More →</a>
+            </div>
+
+            <!-- Insurance -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="bg-primary/10 p-3 rounded-full">
+                  <img src="./public/icons/insurance.svg" alt="Insurance" class="w-6 h-6" />
+                </div>
+                <h4 class="font-bold text-lg">Crop Insurance</h4>
+              </div>
+              <p class="text-gray-600 text-sm">Protect your farm investments with comprehensive insurance coverage against natural disasters and market risks.</p>
+              <a href="/insurance.html" class="text-primary font-medium text-sm mt-4 inline-block">Learn More →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-16">
+      <div class="space-y-5">
+        <div class="container flex md:flex-row flex-col justify-between gap-8">
+          <div class="space-y-7">
+            <div>
+              <a href="/" class="flex items-center gap-2" id="logo">
+                <img
+                  src="./public/images/logo.png"
+                  alt="AgroPlus Logo"
+                  width="34"
+                  height="34"
+                />
+                <span class="font-bold text-2xl">AgroPlus</span>
+              </a>
+            </div>
+
+            <p class="text-sm text-gray-500 max-w-md">
+              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+              amet sint. Velit officia consequat duis enim velit mollit.
+            </p>
+
+            <div class="space-y-3">
+              <p class="md:text-lg font-semibold">Accepted Payments</p>
+              <div class="flex items-center gap-2 flex-wrap max-w-lg">
+                <div
+                  class="border rounded-md flex items-center justify-center px-4 min-h-10"
+                >
+                  <img src="./public/images/payments/stripe.png" alt="" />
+                </div>
+                <div
+                  class="border rounded-md flex items-center justify-center px-4 min-h-10"
+                >
+                  <img src="./public/images/payments/amazon.png" alt="" />
+                </div>
+                <div
+                  class="border rounded-md flex items-center justify-center px-4 min-h-10"
+                >
+                  <img src="./public/images/payments/apple-pay.png" alt="" />
+                </div>
+                <div
+                  class="border rounded-md flex items-center justify-center px-4 min-h-10"
+                >
+                  <img src="./public/images/payments/google-pay.png" alt="" />
+                </div>
+                <div
+                  class="border rounded-md flex items-center justify-center px-4 min-h-10"
+                >
+                  <img src="./public/images/payments/mastercard.png" alt="" />
+                </div>
+                <div
+                  class="border rounded-md flex items-center justify-center px-4 min-h-10"
+                >
+                  <img src="./public/images/payments/paypal.png" alt="" />
+                </div>
+                <div
+                  class="border rounded-md flex items-center justify-center px-4 min-h-10"
+                >
+                  <img src="./public/images/payments/visa.png" alt="" />
+                </div>
+                <div
+                  class="border rounded-md flex items-center justify-center px-4 min-h-10"
+                >
+                  <img src="./public/images/payments/klarna.png" alt="" />
+                </div>
+              </div>
+            </div>
+            <a href="FAQ.html"
+              ><button
+                class="bg-primary text-white font-medium px-4 py-2 rounded-full"
+              >
+                FAQs
+              </button></a
+            >
+          </div>
+
+          <div class="sm:flex flex-grow grid grid-cols-2 justify-between gap-4">
+            <div class="space-y-4">
+              <p class="font-semibold text-lg">Department</p>
+              <ul class="text-sm space-y-2" id="dept-list"></ul>
+            </div>
+            <div class="space-y-4">
+              <p class="font-semibold text-lg">About</p>
+              <ul class="text-sm space-y-2" id="about-list"></ul>
+            </div>
+            <div class="space-y-4">
+              <p class="font-semibold text-lg">Services</p>
+              <ul class="text-sm space-y-2" id="services-list"></ul>
+            </div>
+            <div class="space-y-4">
+              <p class="font-semibold text-lg">Help</p>
+              <ul class="text-sm space-y-2" id="help-list"></ul>
+            </div>
+          </div>
+        </div>
+        <p class="text-center font-medium md:text-sm text-xs">&copy; 2025 AgroPlus. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script src="home.js"></script>
+  </body>
+</html>
