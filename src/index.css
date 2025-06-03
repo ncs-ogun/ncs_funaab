@@ -1811,3 +1811,113 @@ button:hover {
   }
 }
 
+/* Price Range Slider Styles */
+.price-range-inputs {
+  padding: 1rem 0;
+}
+
+.price-range-slider {
+  width: 100%;
+  height: 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  background: rgba(47, 122, 61, 0.2);
+  border-radius: 2px;
+  margin: 1rem 0;
+}
+
+.price-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.price-range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.price-inputs {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+/* Product Badge Variations */
+.product-badge.best-seller {
+  background: #22c55e;
+}
+
+.product-badge.new {
+  background: #3b82f6;
+}
+
+.product-badge.sale {
+  background: #ef4444;
+}
+
+.product-badge.fresh {
+  background: #22c55e;
+}
+
+.product-badge.premium {
+  background: #f59e0b;
+}
+
+.product-badge.organic {
+  background: #22c55e;
+}
+
+/* Product Features Animation */
+.product-feature {
+  transition: transform 0.3s ease;
+}
+
+.product-feature:hover {
+  transform: translateX(5px);
+}
+
+/* Add to Cart Button Animation */
+.add-to-cart-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(47, 122, 61, 0.2);
+}
+
+/* Favorite Button Animation */
+.favorite-button {
+  transition: all 0.3s ease;
+}
+
+.favorite-button:hover {
+  transform: scale(1.1);
+}
+
+.favorite-button.active {
+  background: #ef4444;
+  color: white;
+}
+
+/* Price Range Slider Mobile Styles */
+@media (max-width: 640px) {
+  .price-range-slider::-webkit-slider-thumb {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .price-inputs {
+    font-size: 0.8rem;
+  }
+}
+
