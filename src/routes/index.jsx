@@ -7,6 +7,7 @@ import Marketplace from '../pages/Marketplace';
 import About from '../pages/About';
 import Login from '../pages/Login';
 import Cart from '../pages/Cart';
+import Contact from '../pages/Contact';
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -21,6 +22,7 @@ const AppRoutes = () => {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </AnimatePresence>
   );

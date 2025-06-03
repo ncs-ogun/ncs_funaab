@@ -1,8 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { motion } from 'framer-motion';
 import { FiAward, FiUsers, FiTrendingUp, FiTarget } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 
 const About = () => {
+  const navigate = useNavigate();
+
   const stats = [
     { label: 'Farmers Supported', value: '5,000+', icon: <FiUsers /> },
     { label: 'Loans Disbursed', value: '₦500M+', icon: <FiTrendingUp /> },
@@ -54,6 +57,14 @@ const About = () => {
       bio: 'Operations Management Specialist'
     }
   ];
+
+  const handleGetStarted = () => {
+    navigate('/marketplace');
+  };
+
+  const handleContact = () => {
+    navigate('/contact');
+  };
 
   return (
     <div className="about-page">
@@ -203,6 +214,7 @@ const About = () => {
             <div className="cta-buttons">
               <motion.button
                 className="cta-button primary"
+                onClick={handleGetStarted}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -210,6 +222,7 @@ const About = () => {
               </motion.button>
               <motion.button
                 className="cta-button secondary"
+                onClick={handleContact}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
