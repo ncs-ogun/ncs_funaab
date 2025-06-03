@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // Categories List
 const deptList = document.getElementById("dept-list");
 const categories = [

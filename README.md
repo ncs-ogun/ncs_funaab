@@ -1,70 +1,12 @@
-# AgroPlus - Agricultural Fintech Platform
+# React + Vite
 
-AgroPlus is an innovative fintech solution designed to bridge the gap between farmers and buyers while providing essential financial services to support agricultural businesses. This project was developed for the Nigeria Computer Society (NCS) Ogun State Chapter's 14th Annual Information Technology Development Programme.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Theme
-Fintech Innovation for Cooperative Societies: Exploring the Impact of Fintech on Savings and Loan Management
+Currently, two official plugins are available:
 
-## Features
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-### For Farmers
-- List and sell agricultural products directly to buyers
-- Access agricultural loans and financial services
-- Apply for grants and financial aid
-- Get crop insurance coverage
-- Manage inventory and track sales
-- Secure payment processing
+## Expanding the ESLint configuration
 
-### For Buyers
-- Browse and purchase fresh agricultural products
-- Direct connection with verified farmers
-- Quality assurance on all products
-- Secure payment options
-- Track orders and deliveries
-- Product reviews and ratings
-
-### Financial Services
-- Equipment financing
-- Working capital loans
-- Land acquisition loans
-- Agricultural grants
-- Crop insurance
-- Financial advisory services
-
-## Technology Stack
-- HTML5
-- CSS3 (Tailwind CSS)
-- JavaScript
-- Payment Integration (Coming soon)
-- User Authentication (Coming soon)
-
-## Getting Started
-
-1. Clone the repository:
-```bash
-git clone https://github.com/pabby01/agro-plus.git
-```
-
-2. Open the project in your preferred code editor
-
-3. Start a local development server:
-```bash
-# Using Python
-python -m http.server 8000
-
-# Using Node.js
-npx serve
-```
-
-4. Open your browser and navigate to `http://localhost:8000`
-
-## Contributing
-We welcome contributions to improve AgroPlus. Please feel free to submit issues and pull requests.
-
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Contact
-For inquiries about the project, please contact:
-- Email: adeolalasisi6@gmail.com
-- Phone: +234 902 025 0260
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
