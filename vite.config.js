@@ -1,11 +1,23 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+import path from 'path'
 
-// https://vite.dev/config/
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
   server: {
     port: 5174,
+    strictPort: true,
     open: true
   },
   css: {
@@ -16,11 +28,12 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: true,
+    assetsDir: 'assets',
     rollupOptions: {
       output: {
         manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'framer-motion': ['framer-motion']
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          animations: ['framer-motion'],
         }
       }
     }
