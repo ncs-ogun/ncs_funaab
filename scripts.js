@@ -96,3 +96,23 @@ function redirectToLogin() {
 
 // Initialize user section on page load
 document.addEventListener("DOMContentLoaded", updateUserSection);
+
+// Load Footer Component
+async function loadFooter() {
+  try {
+    const response = await fetch('/common/footer.html');
+    const footerContent = await response.text();
+    const footerElement = document.querySelector('footer');
+    if (footerElement) {
+      footerElement.innerHTML = footerContent;
+    }
+  } catch (error) {
+    console.error('Error loading footer:', error);
+  }
+}
+
+// Initialize footer on page load
+document.addEventListener("DOMContentLoaded", () => {
+  updateUserSection();
+  loadFooter();
+});
