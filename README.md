@@ -20,7 +20,7 @@ AgroPlus is a modern React-based e-commerce platform for agricultural products, 
 ### Installation
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/ncs-ogun/ncs_funaab
 cd Agro
 
 # Install dependencies
