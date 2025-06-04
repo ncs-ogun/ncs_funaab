@@ -83,8 +83,15 @@ const Layout = ({ children }) => {
           </div>
         </div>
 
-        <nav className={`nav-container ${isScrolled ? 'nav-scrolled' : ''}`}>
+        <nav className="nav-container">
           <div className="container">
+            <div className="nav-content-mobile">
+              <Link to="/" className="logo">
+                <img src="/images/logo.png" alt="AgroPlus Logo" width="32" height="32" />
+                <span>AgroPlus</span>
+              </Link>
+              <MobileNav />
+            </div>
             <div className="nav-content">
               <Link to="/" className="logo">
                 <img src="/images/logo.png" alt="AgroPlus Logo" width="32" height="32" />
@@ -130,11 +137,9 @@ const Layout = ({ children }) => {
             </div>
           </div>
         </nav>
-
-        <MobileNav />
       </header>
 
-      <main>
+      <main className="main-content">
         {children}
       </main>
 

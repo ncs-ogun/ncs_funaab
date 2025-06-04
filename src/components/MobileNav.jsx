@@ -3,85 +3,83 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMenu, FiX, FiShoppingCart, FiUser } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { getItemCount } = useCart();
 
   const menuVariants = {
-    closed: {
-      opacity: 0,
-      x: "100%",
-      transition: {
-        duration: 0.2
-      }
-    },
-    open: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.3
-      }
-    }
-  };
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    closed: { x: '100%', opacity: 0, transition: { duration: 0.2 } },
+    open: { x: 0, opacity: 1, transition: { duration: 0.3 } },
   };
 
   return (
-    <>
-      <button className="mobile-menu-button" onClick={toggleMenu}>
-        {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+    <div className="md:hidden">
+      <button className="mobile-menu-button" onClick={() => setIsOpen(true)}>
+        <FiMenu size={24} />
       </button>
-
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            className="mobile-menu"
-            initial="closed"
-            animate="open"
-            exit="closed"
-            variants={menuVariants}
-          >
-            <div className="mobile-menu-header">
-              <Link to="/" className="mobile-logo" onClick={() => setIsOpen(false)}>
-                <img src="/images/logo.png" alt="AgroPlus Logo" width="24" height="24" />
-                <span>AgroPlus</span>
-              </Link>
-            </div>
-
-            <nav className="mobile-nav-links">
-              <Link to="/products" onClick={() => setIsOpen(false)}>Products</Link>
-              <Link to="/loans" onClick={() => setIsOpen(false)}>Loans</Link>
-              <Link to="/marketplace" onClick={() => setIsOpen(false)}>Marketplace</Link>
-              <Link to="/about" onClick={() => setIsOpen(false)}>About</Link>
-              <Link to="/contact" onClick={() => setIsOpen(false)}>Contact</Link>
-            </nav>
-
-            <div className="mobile-nav-actions">
-              <Link to="/cart" className="mobile-action-button" onClick={() => setIsOpen(false)}>
-                <FiShoppingCart />
-                <span>Cart</span>
-              </Link>
-              <Link to="/login" className="mobile-action-button" onClick={() => setIsOpen(false)}>
-                <FiUser />
-                <span>Login</span>
-              </Link>
-            </div>
-          </motion.div>
+          <>
+            <motion.div
+              className="mobile-menu-backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+            />
+            <motion.aside
+              className="mobile-menu-panel"
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={menuVariants}
+            >
+              <div className="mobile-menu-header">
+                <Link to="/" className="mobile-menu-logo" onClick={() => setIsOpen(false)}>
+                  <img src="/images/logo.png" alt="AgroPlus Logo" width="32" height="32" />
+                  <span>AgroPlus</span>
+                </Link>
+                <button className="mobile-menu-close" onClick={() => setIsOpen(false)}>
+                  <FiX size={28} />
+                </button>
+              </div>
+              <nav className="mobile-menu-links">
+                {['Products', 'Loans', 'Marketplace', 'About'].map((item) => (
+                  <Link
+                    key={item}
+                    to={`/${item.toLowerCase()}`}
+                    className="mobile-menu-link"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item}
+                  </Link>
+                ))}
+              </nav>
+              <div className="mobile-menu-actions">
+                <Link
+                  to="/login"
+                  className="mobile-menu-action-btn primary"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <FiUser /> Login
+                </Link>
+                <Link
+                  to="/cart"
+                  className="mobile-menu-action-btn secondary"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <FiShoppingCart /> Cart{getItemCount() > 0 && (
+                    <span className="cart-badge ml-2">{getItemCount()}</span>
+                  )}
+                </Link>
+              </div>
+            </motion.aside>
+          </>
         )}
       </AnimatePresence>
-
-      {isOpen && (
-        <motion.div
-          className="mobile-menu-backdrop"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={() => setIsOpen(false)}
-        />
-      )}
-    </>
+    </div>
   );
 };
 
