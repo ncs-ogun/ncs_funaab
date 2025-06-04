@@ -203,9 +203,9 @@ const Home = () => {
           >
             <motion.div variants={itemVariants}>
               <img
-                src="https://placehold.co/800x400?text=Agricultural+Marketplace"
+                src=""
                 alt="Agricultural Marketplace"
-                className="rounded-lg w-full h-[400px] object-cover"
+                className="rounded-lg w-full max-w-full object-cover max-h-48 sm:h-[400px]"
               />
             </motion.div>
 
