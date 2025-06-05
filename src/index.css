@@ -2309,6 +2309,7 @@ button:hover {
   background: var(--white);
   border: 1px solid rgba(0, 0, 0, 0.1);
   font-weight: 500;
+  color: black;
   transition: all 0.3s ease;
 }
 

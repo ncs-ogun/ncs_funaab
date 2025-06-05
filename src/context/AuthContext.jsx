@@ -7,9 +7,9 @@ const AuthContext = createContext();
 // Mock user database
 const mockUsers = [
   {
-    email: 'admin@example.com',
-    password: 'admin123',
-    name: 'Admin User'
+    email: 'adeolalalasisi6@gmail.com',
+    password: 'OgunNACOS@155',
+    name: 'deola Lasisi'
   }
 ];
 

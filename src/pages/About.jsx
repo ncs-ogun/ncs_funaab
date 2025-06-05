@@ -33,25 +33,25 @@ const About = () => {
 
   const team = [
     {
-      name: 'John Doe',
+      name: 'Adeola Lasisi',
       role: 'CEO & Founder',
       image: '/images/team/ceo.jpg',
       bio: 'With over 15 years in AgriTech'
     },
     {
-      name: 'Jane Smith',
+      name: 'Adeniji Olaoluwa',
       role: 'Chief Technology Officer',
       image: '/images/team/cto.jpg',
       bio: 'Former Tech Lead at AgriCorp'
     },
     {
-      name: 'Michael Johnson',
+      name: 'Aramide Gbadegeshin',
       role: 'Chief Financial Officer',
       image: '/images/team/cfo.jpg',
       bio: 'Expert in Agricultural Finance'
     },
     {
-      name: 'Sarah Williams',
+      name: 'Sarah Aramide',
       role: 'Chief Operations Officer',
       image: '/images/team/coo.jpg',
       bio: 'Operations Management Specialist'
