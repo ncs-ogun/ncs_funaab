@@ -8,7 +8,7 @@ const Header = () => {
         <div className="container flex items-center justify-between font-medium px-0">
           <div className="flex items-center cursor-pointer sm:gap-2">
             <img src="/icons/phone.svg" alt="Phone" width="18" height="18" />
-            <p>+2348133961439</p>
+            <p>+2349020250260</p>
           </div>
           <p className="flex items-center md:gap-4 gap-1">
             <span>Get Agricultural Loans Up to ₦5,000,000</span> <span>|</span>

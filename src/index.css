@@ -663,8 +663,12 @@ button:hover {
   gap: 0.5rem;
   color: var(--text-light);
   margin-bottom: 1rem;
+  text-decoration: none;
 }
-
+.pab {
+  color: var(--text-light);
+  text-decoration: none;
+}
 .footer-newsletter {
   margin-top: 1rem;
 }
@@ -777,11 +781,12 @@ button:hover {
   border-radius: 0.5rem;
   font-weight: 500;
   transition: all 0.3s ease;
+  color: black;
 }
 
 .filter-toggle-btn:hover {
   border-color: var(--primary-color);
-  color: var(--primary-color);
+  color: whitesmoke;
 }
 
 .marketplace-content {
@@ -1940,6 +1945,7 @@ button:hover {
   transition: all 0.3s ease;
   background: var(--white);
   border: 1px solid rgba(0, 0, 0, 0.1);
+  color: black;
 }
 
 .tab-button.active {

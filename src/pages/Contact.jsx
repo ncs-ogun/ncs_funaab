@@ -14,7 +14,7 @@ const Contact = () => {
   const [submitStatus, setSubmitStatus] = useState(null);
 
   const contactInfo = {
-    phone: '+234 813 396 1439',
+    phone: '+234 902 025 0260',
     email: 'info@agroplus.com',
     address: 'Plot 123, Abeokuta-Lagos Expressway, Ogun State, Nigeria',
     hours: 'Monday - Friday: 8:00 AM - 6:00 PM'

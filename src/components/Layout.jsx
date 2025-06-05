@@ -55,7 +55,7 @@ const Layout = ({ children }) => {
                   whileHover={{ scale: 1.05 }}
                 >
                   <FiPhone className="text-white" />
-                  <span>+2348133961439</span>
+                  <span>+2349020250260</span>
                 </motion.div>
               </div>
 
@@ -177,10 +177,10 @@ const Layout = ({ children }) => {
               <div className="space-y-4">
                 <div className="footer-contact-item">
                   <FiPhone />
-                  <span>+2348133961439</span>
+                  <a className='pab' href="tel:+2349020250260"><span>+234902050260</span></a>
                 </div>
                 <div className="footer-contact-item">
-                  <span>info@agroplus.com</span>
+                <a className='pab' href="mailto:info@agroplus.com"><span>info@agroplus.com</span></a>
                 </div>
                 <div className="footer-contact-item">
                   <span>Lagos, Nigeria</span>
