@@ -1,17 +1,21 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
-import { FiPhone, FiChevronDown, FiUser, FiShoppingCart } from 'react-icons/fi';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { FiPhone, FiChevronDown, FiUser, FiShoppingCart, FiLogOut } from 'react-icons/fi';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 import PropTypes from 'prop-types';
 import MobileNav from './MobileNav';
 import { Toaster } from 'react-hot-toast';
 
 const Layout = ({ children }) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { getItemCount } = useCart();
+  const { user, logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +25,11 @@ const Layout = ({ children }) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleLogout = async () => {
+    await logout();
+    navigate('/');
+  };
 
   return (
     <>
@@ -116,12 +125,49 @@ const Layout = ({ children }) => {
               </div>
 
               <div className="nav-actions">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Link to="/login" className="nav-action-button">
-                    <FiUser />
-                    <span>Login</span>
-                  </Link>
-                </motion.div>
+                {user ? (
+                  <div className="relative">
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="nav-action-button cursor-pointer"
+                      onClick={() => setShowProfileMenu(!showProfileMenu)}
+                    >
+                      <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                        <span className="text-green-600 font-medium">
+                          {user.name ? user.name[0].toUpperCase() : 'U'}
+                        </span>
+                      </div>
+                      <span className="text-gray-700">{user.name || 'User'}</span>
+                      <FiChevronDown className={`transform transition-transform ${showProfileMenu ? 'rotate-180' : ''}`} />
+                    </motion.div>
+
+                    {showProfileMenu && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50"
+                      >
+                        <button
+                          onClick={handleLogout}
+                          className="w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100 flex items-center gap-2"
+                        >
+                          <FiLogOut />
+                          <span>Logout</span>
+                        </button>
+                      </motion.div>
+                    )}
+                  </div>
+                ) : (
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Link to="/login" className="nav-action-button">
+                      <FiUser />
+                      <span>Login</span>
+                    </Link>
+                  </motion.div>
+                )}
+                
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Link to="/cart" className="nav-action-button">
                     <div className="cart-icon-container">

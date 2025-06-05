@@ -6,6 +6,7 @@ import Loans from '../pages/Loans';
 import Marketplace from '../pages/Marketplace';
 import About from '../pages/About';
 import Login from '../pages/Login';
+import ForgotPassword from '../pages/ForgotPassword';
 import Cart from '../pages/Cart';
 import Contact from '../pages/Contact';
 
@@ -21,6 +22,7 @@ const AppRoutes = () => {
         <Route path="/marketplace" element={<Marketplace />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
